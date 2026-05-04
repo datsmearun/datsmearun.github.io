@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arun Pratap Singh — Senior Backend Engineer</title>
+<meta name="description" content="Senior Java & Spring Boot backend engineer with 7 years experience in Travel Tech, Fintech, LLM Integration, and Supply Chain. Open to Senior/Lead Backend roles."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#05050a;
+  --bg1:#0c0c14;
+  --bg2:#11111c;
+  --bg3:#181826;
+  --gold:#d4a853;
+  --gold2:#f0c870;
+  --gold-dim:#8a6a2a;
+  --teal:#4ecdc4;
+  --teal-dim:rgba(78,205,196,0.15);
+  --text:#ede9e0;
+  --sub:#9c99a8;
+  --muted:#5a576a;
+  --border:rgba(212,168,83,0.13);
+  --border2:rgba(255,255,255,0.06);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* subtle dot grid */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(212,168,83,0.07) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+
+/* ────── NAV ────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 4rem;
+  background:rgba(5,5,10,0.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.05em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transition:transform .2s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-badge{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.3rem .9rem;border:1px solid rgba(78,205,196,.3);color:var(--teal);
+  animation:pulse-border 3s ease-in-out infinite;
+}
+@keyframes pulse-border{0%,100%{border-color:rgba(78,205,196,.3)}50%{border-color:rgba(78,205,196,.7)}}
+
+/* ────── HERO ────── */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;
+  align-items:center;padding:8rem 4rem 5rem;
+  position:relative;z-index:1;overflow:hidden;
+}
+/* ambient glows */
+.hero::before{
+  content:'';position:absolute;top:-10%;right:-8%;
+  width:60%;height:90%;
+  background:radial-gradient(ellipse,rgba(78,205,196,.05) 0%,transparent 65%);
+  pointer-events:none;
+}
+
+.hero-content{position:relative;z-index:2}
+
+.availability{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);border:1px solid rgba(78,205,196,.25);
+  padding:.35rem .9rem;margin-bottom:2rem;
+  opacity:0;animation:riseIn .6s ease .1s forwards;
+}
+.dot-live{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 6px var(--teal);
+  animation:blink 2s ease-in-out infinite;
+}
+
+.hero-name{
+  font-family:var(--serif);font-size:clamp(3rem,5.5vw,5.8rem);
+  font-weight:700;line-height:1.0;color:var(--text);
+  margin-bottom:.15rem;
+  opacity:0;animation:riseIn .7s ease .2s forwards;
+}
+.hero-name em{font-style:italic;color:var(--gold)}
+
+.hero-surname{
+  font-family:var(--serif);font-size:clamp(3rem,5.5vw,5.8rem);
+  font-weight:400;font-style:italic;line-height:1.0;color:var(--sub);
+  margin-bottom:1.6rem;
+  opacity:0;animation:riseIn .7s ease .3s forwards;
+}
+
+.hero-role{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.75rem;
+  opacity:0;animation:riseIn .7s ease .4s forwards;
+}
+.hero-role::before{content:'';width:32px;height:1px;background:var(--gold-dim)}
+
+.hero-loc{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;
+  color:var(--muted);margin-bottom:2rem;padding-left:40px;
+  opacity:0;animation:riseIn .7s ease .45s forwards;
+}
+
+.hero-tagline{
+  font-size:1.08rem;color:var(--sub);max-width:540px;line-height:1.85;
+  margin-bottom:2.5rem;
+  opacity:0;animation:riseIn .7s ease .55s forwards;
+}
+.hero-tagline strong{color:var(--text);font-weight:500}
+
+.cta-row{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:riseIn .7s ease .7s forwards;
+}
+
+.btn{
+  display:inline-block;font-family:var(--mono);font-size:.62rem;
+  font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;padding:.85rem 2rem;transition:all .22s;cursor:pointer;border:none;
+}
+.btn-gold{background:var(--gold);color:#05050a}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{border:1px solid var(--border2);color:var(--sub);background:transparent}
+.btn-outline:hover{border-color:rgba(78,205,196,.35);color:var(--teal)}
+
+/* Hero visual */
+.hero-visual{
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;animation:fadeIn 1.2s ease .95s forwards;
+  position:relative;z-index:2;
+}
+.orb{position:relative;width:340px;height:340px}
+.orb-ring{
+  position:absolute;border-radius:50%;border:1px solid;
+  animation:spin linear infinite;
+}
+.orb-ring:nth-child(1){inset:0;border-color:rgba(212,168,83,.2);animation-duration:24s}
+.orb-ring:nth-child(2){inset:30px;border-color:rgba(78,205,196,.15);animation-duration:18s;animation-direction:reverse}
+.orb-ring:nth-child(3){inset:62px;border-color:rgba(212,168,83,.1);animation-duration:30s}
+.orb-ring:nth-child(4){inset:96px;border-color:rgba(78,205,196,.08);animation-duration:22s;animation-direction:reverse}
+.orb-core{
+  position:absolute;inset:122px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+}
+.orb-init{font-family:var(--serif);font-size:2.1rem;font-weight:700;font-style:italic;color:var(--gold)}
+.orb-sub{font-family:var(--mono);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+.orb-dot{position:absolute;border-radius:50%;top:50%;left:50%}
+.orb-dot:nth-child(6){width:8px;height:8px;background:var(--gold);box-shadow:0 0 10px var(--gold);
+  transform:rotate(0deg) translateX(168px) translateY(-50%);animation:spin 24s linear infinite}
+.orb-dot:nth-child(7){width:6px;height:6px;background:var(--teal);box-shadow:0 0 8px var(--teal);
+  transform:rotate(0deg) translateX(138px) translateY(-50%);animation:spin 18s linear infinite reverse}
+.orb-dot:nth-child(8){width:5px;height:5px;background:var(--gold);
+  transform:rotate(120deg) translateX(108px) translateY(-50%);animation:spin 30s linear infinite}
+.orb-dot:nth-child(9){width:4px;height:4px;background:var(--teal);
+  transform:rotate(240deg) translateX(78px) translateY(-50%);animation:spin 22s linear infinite reverse}
+
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;animation:fadeIn 1s ease 1.5s forwards;z-index:2;
+}
+.scroll-cue span{font-family:var(--mono);font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--gold),transparent);animation:blink 2.4s ease-in-out infinite}
+
+/* ────── SECTION BASE ────── */
+section{padding:7rem 4rem;position:relative;z-index:1}
+.eyebrow{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.8rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold-dim)}
+.section-h{
+  font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.2rem);
+  font-weight:700;line-height:1.1;margin-bottom:3.5rem;
+}
+
+/* ────── ABOUT ────── */
+#about{background:var(--bg1)}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:6rem;align-items:start}
+.about-text p{color:var(--sub);margin-bottom:1.2rem;font-size:1rem;line-height:1.9}
+.about-text strong{color:var(--text);font-weight:500}
+.about-text .quote{
+  font-family:var(--serif);font-style:italic;font-size:1.2rem;
+  color:var(--gold);border-left:2px solid var(--gold);
+  padding-left:1.25rem;margin:2rem 0;line-height:1.6;
+}
+
+.metrics{display:flex;flex-direction:column;gap:1.1rem}
+.metric{
+  display:flex;align-items:center;gap:1.25rem;
+  padding:1.1rem 1.35rem;background:var(--bg3);
+  border:1px solid var(--border);border-left:3px solid var(--gold);
+}
+.metric-n{
+  font-family:var(--serif);font-size:2.4rem;font-weight:700;
+  color:var(--gold);line-height:1;min-width:70px;text-align:right;
+}
+.metric-info .label{font-size:.9rem;color:var(--text);font-weight:500}
+.metric-info .sub{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ────── SKILLS ────── */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.skill-block{
+  padding:1.75rem;border:1px solid var(--border);background:var(--bg1);
+  position:relative;overflow:hidden;transition:border-color .25s;
+}
+.skill-block::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.skill-block:hover{border-color:rgba(212,168,83,.35)}
+.skill-block:hover::before{opacity:1}
+.skill-cat{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.1rem;
+}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{
+  padding:.28rem .75rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;
+  color:var(--muted);border:1px solid var(--border2);transition:all .18s;cursor:default;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+.chip.star{border-color:rgba(212,168,83,.3);color:var(--text)}
+
+/* ────── EXPERIENCE ────── */
+#experience{background:var(--bg1)}
+.exp-wrap{display:grid;grid-template-columns:1fr;gap:0}
+
+.exp-card{
+  padding:2.5rem 2.5rem 2.5rem 3.5rem;
+  border:1px solid var(--border);border-top:none;
+  position:relative;
+  transition:background .25s;
+}
+.exp-card:first-child{border-top:1px solid var(--border);border-radius:2px 2px 0 0}
+.exp-card:last-child{border-radius:0 0 2px 2px}
+.exp-card:hover{background:var(--bg2)}
+.exp-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--border);
+}
+.exp-card.current::before{background:var(--gold)}
+.exp-card.prev::before{background:var(--teal)}
+
+.exp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}
+.exp-role{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--text);line-height:1.2}
+.exp-badge{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.28rem .75rem;flex-shrink:0;
+}
+.badge-current{border:1px solid rgba(212,168,83,.4);color:var(--gold)}
+.badge-prev{border:1px solid rgba(78,205,196,.3);color:var(--teal)}
+
+.exp-co{font-size:.95rem;color:var(--gold);margin-bottom:.2rem;font-weight:500}
+.exp-date{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.25rem;
+}
+
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.exp-bullets li{
+  font-size:.96rem;color:var(--sub);line-height:1.8;
+  padding-left:1.5rem;position:relative;
+}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--gold-dim);font-size:.75rem;top:.22rem}
+.exp-bullets strong{color:var(--text);font-weight:500}
+
+.exp-tech-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.exp-tech{
+  padding:.2rem .65rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;
+  background:var(--bg3);color:var(--teal);border:1px solid rgba(78,205,196,.15);
+}
+
+/* ────── DOMAINS ────── */
+#domains{background:var(--bg)}
+.domains-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.domain-card{
+  padding:2rem 1.75rem;background:var(--bg1);border:1px solid var(--border);
+  position:relative;overflow:hidden;transition:all .25s;
+}
+.domain-card:hover{transform:translateY(-4px);border-color:rgba(212,168,83,.3)}
+.domain-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--gold),var(--teal));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.domain-card:hover::after{transform:scaleX(1)}
+.domain-icon{font-size:1.4rem;margin-bottom:1.1rem}
+.domain-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.6rem}
+.domain-desc{font-size:.88rem;color:var(--sub);line-height:1.75}
+
+/* ────── OPEN TO ────── */
+#open-to{background:var(--bg1)}
+.open-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center}
+.open-text p{color:var(--sub);font-size:1rem;line-height:1.9;margin-bottom:1rem}
+.open-text strong{color:var(--text);font-weight:500}
+.role-cards{display:flex;flex-direction:column;gap:1rem}
+.role-card{
+  padding:1.2rem 1.5rem;background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;gap:1rem;transition:border-color .2s;
+}
+.role-card:hover{border-color:rgba(212,168,83,.35)}
+.role-icon{font-size:1.2rem;flex-shrink:0}
+.role-name{font-size:.95rem;color:var(--text);font-weight:500}
+.role-sub{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ────── CONTACT ────── */
+#contact{
+  background:var(--bg);text-align:center;padding:8rem 4rem;
+  position:relative;overflow:hidden;
+}
+#contact::before{
+  content:'CONNECT';position:absolute;
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(5rem,18vw,14rem);
+  color:rgba(212,168,83,.025);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;white-space:nowrap;z-index:0;
+}
+.contact-inner{position:relative;z-index:1}
+.contact-sub{color:var(--sub);max-width:500px;margin:.75rem auto 2rem;font-size:1rem;line-height:1.8}
+.contact-email{
+  display:inline-block;font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.3rem,3vw,2.3rem);color:var(--gold);
+  text-decoration:none;margin-bottom:3rem;transition:opacity .2s;
+}
+.contact-email:hover{opacity:.7}
+.social-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.social-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.7rem 1.5rem;border:1px solid var(--border);
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:all .22s;
+}
+.social-btn:hover{border-color:rgba(212,168,83,.4);color:var(--gold)}
+
+/* ────── FOOTER ────── */
+footer{
+  padding:1.75rem 4rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--muted);
+  position:relative;z-index:1;
+}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ────── REVEAL ────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.up{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+
+/* ────── ANIMATIONS ────── */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* ────── RESPONSIVE ────── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-badge{display:none}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem}
+  .hero-visual{display:none}
+  section{padding:5rem 1.5rem}
+  .about-grid,.open-grid{grid-template-columns:1fr;gap:3rem}
+  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">APS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="nav-badge">Open to Opportunities</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="availability">
+      <span class="dot-live"></span>
+      Open to Senior / Lead Backend roles
+    </div>
+    <h1 class="hero-name">Arun <em>Pratap</em></h1>
+    <p class="hero-surname">Singh</p>
+    <p class="hero-role">Lead Engineer · Kellton India</p>
+    <p class="hero-loc">📍 Lucknow / Gurgaon, India &nbsp;·&nbsp; linkedin.com/in/arunpratap7</p>
+    <p class="hero-tagline">
+      Senior Java engineer with <strong>7 years</strong> building high-throughput, production-grade backend systems —
+      from scalable flight booking engines at <strong>ixigo</strong> to enterprise supply chain APIs at <strong>Kellton</strong>.
+      Now at the frontier of <strong>LLM integration</strong> with Claude, GPT-4, and Gemini.
+    </p>
+    <div class="cta-row">
+      <a href="#experience" class="btn btn-gold">View Experience</a>
+      <a href="https://linkedin.com/in/arunpratap7" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orb">
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-core">
+        <span class="orb-init">APS</span>
+        <span class="orb-sub">7 yrs · Lead Eng</span>
+      </div>
+      <div class="orb-dot"></div>
+      <div class="orb-dot"></div>
+      <div class="orb-dot"></div>
+      <div class="orb-dot"></div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="eyebrow">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-h">Building high-throughput systems at the intersection of Travel, Fintech, and AI</h2>
+        <p>I'm a <strong>Senior Java engineer</strong> with 7 years building high-throughput, production-grade backend systems — from scalable flight booking engines at <strong>ixigo</strong> to enterprise supply chain APIs at <strong>Kellton</strong>.</p>
+        <p>My core stack is <strong>Java 11/17/21 · Spring Boot 3 · Microservices · Apache Kafka · PostgreSQL · REST APIs</strong>. I specialise in event-driven architectures, CI/CD with Azure DevOps, and cloud deployments on AWS and Azure.</p>
+        <p>In the travel domain I've delivered end-to-end <strong>Amadeus GDS integration</strong> (search, pricing, booking, ticketing) and built LCC partner pipelines handling thousands of concurrent requests.</p>
+        <div class="quote">"I actively integrate LLMs — Claude, GPT-4, Gemini — into backend systems and use Cursor IDE daily for AI-accelerated development."</div>
+        <p>Open to <strong>Senior / Lead Backend roles</strong> in Travel Tech, Fintech, or AI-first product companies. Let's connect.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-n">7</div>
+          <div class="metric-info">
+            <div class="label">Years Experience</div>
+            <div class="sub">Production backend systems</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-n">3</div>
+          <div class="metric-info">
+            <div class="label">LLMs Integrated</div>
+            <div class="sub">Claude · GPT-4 · Gemini</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-n">4+</div>
+          <div class="metric-info">
+            <div class="label">Industry Domains</div>
+            <div class="sub">Travel · Fintech · Supply Chain · Logistics</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-n">∞</div>
+          <div class="metric-info">
+            <div class="label">APIs Shipped</div>
+            <div class="sub">High-throughput, low-latency</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <p class="eyebrow">Technical Skills</p>
+    <h2 class="section-h">Core Stack</h2>
+    <div class="skills-grid">
+
+      <div class="skill-block">
+        <p class="skill-cat">Languages &amp; Frameworks</p>
+        <div class="chips">
+          <span class="chip star">Java 11/17/21</span>
+          <span class="chip star">Spring Boot 3</span>
+          <span class="chip star">Spring MVC</span>
+          <span class="chip">Spring Security</span>
+          <span class="chip">Spring Data JPA</span>
+          <span class="chip">Hibernate 4+</span>
+          <span class="chip">Python 3</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <p class="skill-cat">Microservices &amp; Messaging</p>
+        <div class="chips">
+          <span class="chip star">Microservices Architecture</span>
+          <span class="chip star">Apache Kafka</span>
+          <span class="chip">RESTful APIs</span>
+          <span class="chip">WebSockets</span>
+          <span class="chip">Event-Driven Design</span>
+          <span class="chip">gRPC</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <p class="skill-cat">Travel Tech &amp; GDS</p>
+        <div class="chips">
+          <span class="chip star">Amadeus GDS (End-to-End)</span>
+          <span class="chip star">LCC Partner Integrations</span>
+          <span class="chip">Flight Search &amp; Pricing</span>
+          <span class="chip">Booking &amp; Ticketing</span>
+          <span class="chip">NDC APIs</span>
+          <span class="chip">PNR Management</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <p class="skill-cat">AI / LLM Integration</p>
+        <div class="chips">
+          <span class="chip star">Claude API (Anthropic)</span>
+          <span class="chip star">OpenAI GPT-4</span>
+          <span class="chip star">Gemini API</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">RAG Pipelines</span>
+          <span class="chip">Cursor IDE</span>
+          <span class="chip">LangChain</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <p class="skill-cat">Cloud &amp; DevOps</p>
+        <div class="chips">
+          <span class="chip star">Microsoft Azure</span>
+          <span class="chip star">Azure DevOps (CI/CD)</span>
+          <span class="chip">AWS (DynamoDB, SNS, Chime)</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">Atlassian BitBucket/Bamboo</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <p class="skill-cat">Databases &amp; Tools</p>
+        <div class="chips">
+          <span class="chip star">PostgreSQL</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">MS SQL</span>
+          <span class="chip">AWS DynamoDB</span>
+          <span class="chip">Hibernate ORM</span>
+          <span class="chip">DBeaver</span>
+          <span class="chip">JUnit 5</span>
+          <span class="chip">Postman</span>
+          <span class="chip">Swagger UI</span>
+          <span class="chip">Splunk</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <p class="eyebrow">Work Experience</p>
+    <h2 class="section-h">Professional Journey</h2>
+    <div class="exp-wrap">
+
+      <!-- Kellton -->
+      <div class="exp-card current">
+        <div class="exp-top">
+          <h3 class="exp-role">Lead Engineer</h3>
+          <span class="exp-badge badge-current">Current</span>
+        </div>
+        <p class="exp-co">Kellton India Pvt. Ltd. · Gurgaon, India</p>
+        <p class="exp-date">Sep 2024 – Present</p>
+        <ul class="exp-bullets">
+          <li>Lead the backend engineering team delivering enterprise-grade <strong>Java/Spring Boot microservices</strong> for supply chain and warehousing platforms.</li>
+          <li>Architect and review <strong>RESTful APIs</strong>, ensuring scalability, security, and adherence to design patterns across multiple product teams.</li>
+          <li>Drive adoption of <strong>AI-assisted development</strong> using Cursor IDE, Claude, and GPT-4 to improve developer productivity and code quality.</li>
+          <li>Manage <strong>Azure DevOps CI/CD pipelines</strong> for deployments across Development, UAT, and Production environments.</li>
+          <li>Conduct code reviews, mentor junior engineers, and define technical roadmaps aligned with business goals.</li>
+        </ul>
+        <div class="exp-tech-row">
+          <span class="exp-tech">Java 17/21</span>
+          <span class="exp-tech">Spring Boot 3</span>
+          <span class="exp-tech">Microservices</span>
+          <span class="exp-tech">Azure DevOps</span>
+          <span class="exp-tech">Claude API</span>
+          <span class="exp-tech">GPT-4</span>
+          <span class="exp-tech">Kubernetes</span>
+          <span class="exp-tech">PostgreSQL</span>
+        </div>
+      </div>
+
+      <!-- ixigo -->
+      <div class="exp-card prev">
+        <div class="exp-top">
+          <h3 class="exp-role">Senior Software Engineer – Travel Tech</h3>
+          <span class="exp-badge badge-prev">Travel Tech</span>
+        </div>
+        <p class="exp-co">ixigo (Le Travenues Technology Ltd.) · Gurgaon, India</p>
+        <p class="exp-date">2022 – 2024</p>
+        <ul class="exp-bullets">
+          <li>Designed and built a <strong>scalable, high-throughput flight booking backend system</strong> handling thousands of concurrent search and booking requests with low latency.</li>
+          <li>Delivered <strong>end-to-end Amadeus GDS integration</strong> covering flight search, fare pricing, availability, PNR creation, ticketing, and post-booking services.</li>
+          <li>Integrated <strong>multiple LCC (Low-Cost Carrier) partners</strong> into a standardised booking pipeline, enabling unified fare aggregation and booking flows.</li>
+          <li>Optimised database queries and caching strategies, significantly improving response times for high-concurrency travel search APIs.</li>
+          <li>Collaborated closely with product, QA, and frontend teams to ship new features and maintain SLA on mission-critical booking infrastructure.</li>
+        </ul>
+        <div class="exp-tech-row">
+          <span class="exp-tech">Java 11/17</span>
+          <span class="exp-tech">Spring Boot</span>
+          <span class="exp-tech">Amadeus GDS</span>
+          <span class="exp-tech">NDC APIs</span>
+          <span class="exp-tech">Apache Kafka</span>
+          <span class="exp-tech">PostgreSQL</span>
+          <span class="exp-tech">Redis</span>
+          <span class="exp-tech">AWS</span>
+        </div>
+      </div>
+
+      <!-- Earlier -->
+      <div class="exp-card">
+        <div class="exp-top">
+          <h3 class="exp-role">Software Engineer</h3>
+          <span class="exp-badge badge-prev">Fintech / Supply Chain</span>
+        </div>
+        <p class="exp-co">Earlier Roles · 2018 – 2022</p>
+        <p class="exp-date">4 years · Java backend development</p>
+        <ul class="exp-bullets">
+          <li>Built and maintained Java/Spring Boot backend services for Fintech and Supply Chain clients, handling payment processing, financial reconciliation, and logistics integrations.</li>
+          <li>Developed RESTful APIs, event-driven microservices with Kafka, and integrated third-party payment gateways including Stripe API.</li>
+          <li>Worked with <strong>React Native (Basic)</strong> and <strong>React JS</strong> for supporting full-stack feature delivery on cross-functional teams.</li>
+          <li>Established strong foundations in system design, high-throughput API design, and ETL pipelines using Python.</li>
+        </ul>
+        <div class="exp-tech-row">
+          <span class="exp-tech">Java 8/11</span>
+          <span class="exp-tech">Spring Boot</span>
+          <span class="exp-tech">Kafka</span>
+          <span class="exp-tech">MySQL</span>
+          <span class="exp-tech">Stripe API</span>
+          <span class="exp-tech">ETL (Python)</span>
+          <span class="exp-tech">React Native</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains">
+  <div class="reveal">
+    <p class="eyebrow">Domain Expertise</p>
+    <h2 class="section-h">Where I Create Impact</h2>
+    <div class="domains-grid">
+
+      <div class="domain-card">
+        <div class="domain-icon">✈️</div>
+        <h3 class="domain-title">Travel Technology</h3>
+        <p class="domain-desc">End-to-end Amadeus GDS integration — search, pricing, availability, PNR creation, ticketing. LCC partner pipelines. High-concurrency flight booking backends at ixigo scale.</p>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">🤖</div>
+        <h3 class="domain-title">LLM Integration</h3>
+        <p class="domain-desc">Embedding Claude, GPT-4, and Gemini into production backend systems. Prompt engineering, RAG pipelines, AI-accelerated development with Cursor IDE.</p>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">💳</div>
+        <h3 class="domain-title">Fintech</h3>
+        <p class="domain-desc">Payment gateway integrations (Stripe), transaction processing, financial reconciliation systems, and building secure, compliant Fintech backends with high reliability.</p>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">📦</div>
+        <h3 class="domain-title">Supply Chain &amp; Logistics</h3>
+        <p class="domain-desc">Enterprise supply chain APIs, warehousing platform backends, and logistics integration services connecting complex multi-party systems at Kellton.</p>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">⚡</div>
+        <h3 class="domain-title">High-Throughput Systems</h3>
+        <p class="domain-desc">Event-driven microservices with Apache Kafka, horizontally scalable Spring Boot services, and low-latency API design for thousands of concurrent requests.</p>
+      </div>
+
+      <div class="domain-card">
+        <div class="domain-icon">☁️</div>
+        <h3 class="domain-title">Cloud &amp; DevOps</h3>
+        <p class="domain-desc">Azure DevOps CI/CD pipelines, AWS deployments (DynamoDB, SNS, Chime), Docker, Kubernetes, and production observability with Splunk.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OPEN TO -->
+<section id="open-to">
+  <div class="reveal">
+    <p class="eyebrow">Career</p>
+    <div class="open-grid">
+      <div class="open-text">
+        <h2 class="section-h">Open to Senior &amp; Lead Backend Roles</h2>
+        <p>After 7 years building production-grade backend systems across Travel Tech, Fintech, and Supply Chain — and now leading engineering teams at Kellton — I'm actively exploring my next big challenge.</p>
+        <p>I thrive in environments where <strong>technical depth matters</strong> — where the problems are genuinely hard, the scale is real, and engineering decisions have direct business impact.</p>
+        <p>I'm particularly excited about <strong>AI-first product companies</strong> integrating LLMs into core workflows, and Travel Tech or Fintech companies with complex domain problems worth solving.</p>
+        <p>Let's talk if you're building something meaningful. I'm reachable at <a href="mailto:datsmearun@gmail.com" style="color:var(--gold)">datsmearun@gmail.com</a> or via LinkedIn.</p>
+      </div>
+      <div class="role-cards">
+        <div class="role-card">
+          <div class="role-icon">🎯</div>
+          <div>
+            <div class="role-name">Senior Backend Engineer</div>
+            <div class="role-sub">Java · Spring Boot · Microservices</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🚀</div>
+          <div>
+            <div class="role-name">Lead Backend Engineer</div>
+            <div class="role-sub">Team leadership · Architecture · Mentoring</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">✈️</div>
+          <div>
+            <div class="role-name">Travel Tech Specialist</div>
+            <div class="role-sub">GDS · NDC · Booking platforms</div>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🤖</div>
+          <div>
+            <div class="role-name">AI/LLM Backend Engineer</div>
+            <div class="role-sub">Claude · GPT-4 · Gemini integration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <p class="eyebrow" style="justify-content:center">Contact</p>
+    <h2 class="section-h">Let's Build Something Together</h2>
+    <p class="contact-sub">Senior / Lead Backend roles in Travel Tech, Fintech, or AI-first product companies. Open to both full-time and consulting conversations.</p>
+    <a href="mailto:datsmearun@gmail.com" class="contact-email">datsmearun@gmail.com</a>
+    <div class="social-row">
+      <a href="https://linkedin.com/in/arunpratap7" target="_blank" rel="noopener" class="social-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/arunpratap7
+      </a>
+
+      <a href="#" class="social-btn" onclick="alert('Add your resume PDF link here')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Arun Pratap Singh · Lead Engineer · Kellton India</span>
+  <span>Hosted free on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></span>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up') });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
